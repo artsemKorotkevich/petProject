@@ -1,9 +1,5 @@
-drop table if exists task cascade;
-
-drop table if exists "user" cascade;
-
 create table "user" (
-    id uuid not null,
+    id bigserial not null,
     name varchar(255),
     email varchar(255),
     primary key (id));
@@ -18,9 +14,9 @@ create table task (
     start_date_time timestamp,
     status varchar(255),
     updated_date timestamp,
-    "creator_id" uuid,
-    "executor_id" uuid,
-    "inspecting_id" uuid,
+    "creator_id" bigserial,
+    "executor_id" bigserial,
+    "inspecting_id" bigserial,
     primary key (id));
 
 alter table if exists task

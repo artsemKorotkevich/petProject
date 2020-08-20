@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(UUID id) {
+    public User findById(Long id) {
         User userById = userRepository.findUserById(id);
         if(userById == null){
             throw new UserNotFoundException(String.format("The user with this id = {%s} was not found", id));
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(UUID id) {
+    public void delete(Long id) {
         User userById = userRepository.findUserById(id);
         if(userById == null){
             throw new UserNotFoundException(String.format("The user with this id = {%s} was not found", id));
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User user, UUID id){
+    public User update(User user, Long id){
         User currentUser = userRepository.findUserById(id);
         if(currentUser != null){
             currentUser.setEmail(user.getEmail());

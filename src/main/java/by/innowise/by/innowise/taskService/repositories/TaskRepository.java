@@ -21,15 +21,15 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllByInspecting(User user);
 
     @Query("select t from Task t where t.status = :status AND (t.creator.id = :id or t.executor.id = :id  or t.inspecting.id = :id) ")
-    Page<Task> findAllByStatusIsAndCreatorIdOrExecutorIdOrInspectingId(TaskEnum status, UUID id, Pageable pageable);
+    Page<Task> findAllByStatusIsAndCreatorIdOrExecutorIdOrInspectingId(TaskEnum status, Long id, Pageable pageable);
 
     @Query("select t from Task t where t.creator.id = :id or t.executor.id = :id AND t.status <> 'DELETED' ")
-    Page<Task> findAllByUserIdWithPaginationWithoutDeleted(UUID id, Pageable pageable);
+    Page<Task> findAllByUserIdWithPaginationWithoutDeleted(Long id, Pageable pageable);
 
     @Query("select t from Task t where t.status <> :status AND (t.creator.id = :id or t.executor.id = :id  or t.inspecting.id = :id) ")
-    Page<Task> findAllByStatusIsNotAndCreatorIdOrExecutorIdOrInspectingId(TaskEnum status, UUID id, Pageable pageable);
+    Page<Task> findAllByStatusIsNotAndCreatorIdOrExecutorIdOrInspectingId(TaskEnum status, Long id, Pageable pageable);
 
     @Query("select t from Task t where t.creator.id = :id or t.executor.id = :id or t.inspecting.id = :id")
-    List<Task> findAllByUserId(UUID id);
+    List<Task> findAllByUserId(Long id);
 
 }

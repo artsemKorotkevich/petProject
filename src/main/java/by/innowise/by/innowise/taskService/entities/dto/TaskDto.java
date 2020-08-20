@@ -12,9 +12,9 @@ public class TaskDto {
     private String name;
     private TaskEnum status;
     private String description;
-    private UUID creator;
-    private UUID executor;
-    private UUID inspecting;
+    private long creator;
+    private long executor;
+    private long inspecting;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private String timeZone;

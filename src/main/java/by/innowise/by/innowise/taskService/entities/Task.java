@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -37,6 +38,8 @@ public class Task {
     private User executor;
     @ManyToOne
     private User inspecting;
+    @OneToMany(mappedBy = "task")
+    private List<Comment> comments;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startDateTime;

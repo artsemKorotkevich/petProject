@@ -5,18 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "\"user\"")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-    private String email;
+    @ManyToOne
+    @JoinColumn
+    private Task task;
+    @ManyToOne
+    private User  user;
+    private long parentComment;
+    private String comment;
 }
-

@@ -17,7 +17,7 @@ public interface TaskService {
     Task update(TaskDto task);
     void delete(Long id);
     Task findById(Long id);
-    Page<Task> findByUserTaskIdWithPagination (UUID id, int page, int size, Optional<String> status);
+    Page<Task> findByUserTaskIdWithPagination (long id, int page, int size, Optional<String> status);
 
 
 }

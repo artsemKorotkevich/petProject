@@ -78,7 +78,7 @@ public class TaskServiceImpl implements TaskService {
 
 
     @Override
-    public Page<Task> findByUserTaskIdWithPagination(UUID id, int page, int size, Optional<String> status) {
+    public Page<Task> findByUserTaskIdWithPagination(long id, int page, int size, Optional<String> status) {
         if (status.isPresent()) {
             TaskEnum taskNum = TaskEnum.valueOf(status.get().toUpperCase());
             if (size == 0) {

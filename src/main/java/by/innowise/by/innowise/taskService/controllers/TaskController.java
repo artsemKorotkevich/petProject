@@ -60,7 +60,7 @@ public class TaskController {
     }
 
     @GetMapping("/user/{id}/tasks")
-    private ResponseEntity<Page<Task>> getAllTask(@PathVariable UUID id, @RequestParam Optional<String> status, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "0") int size) {
+    private ResponseEntity<Page<Task>> getAllTask(@PathVariable Long id, @RequestParam Optional<String> status, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "0") int size) {
         Page<Task> tasks = taskService.findByUserTaskIdWithPagination(id, page, size, status);
         return ResponseEntity.ok().body(tasks);
     }
