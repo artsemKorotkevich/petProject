@@ -40,6 +40,8 @@ public class Task {
     private User inspecting;
     @OneToMany(mappedBy = "task")
     private List<Comment> comments;
+    @OneToMany(mappedBy = "task")
+    private List<History> historyList;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startDateTime;

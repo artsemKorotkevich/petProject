@@ -1,7 +1,7 @@
 create table comment (
 id  bigserial not null,
     comment varchar(255),
-    parent_comment int8 not null,
+    parent_comment int8,
     task_id int8,
     "user_id" int8,
      primary key (id));
