@@ -4,6 +4,8 @@ id  bigserial not null,
     parent_comment int8,
     task_id int8,
     "user_id" int8,
+    creation_date timestamp,
+    updated_date timestamp,
      primary key (id));
 
 alter table if exists comment

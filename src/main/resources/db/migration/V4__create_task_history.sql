@@ -3,9 +3,8 @@ create table  history(
     task_id bigserial,
     "creator_id" bigserial,
     "executor_id" bigserial,
-    "inspecting_id" bigserial,
     "commentator_id" bigserial,
-    update_date timestamp,
+    creation_date timestamp,
     primary key (id)
 );
 
@@ -20,10 +19,6 @@ alter table if exists history
 alter table if exists history
     add constraint task_executor_fk
     foreign key ("executor_id") references "user";
-
-alter table if exists history
-    add constraint task_inspecting_fk
-     foreign key ("inspecting_id") references "user";
 
 alter table if exists history
     add constraint task_commentator_fk

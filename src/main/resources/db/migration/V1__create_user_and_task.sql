@@ -1,7 +1,11 @@
+CREATE SEQUENCE hibernate_sequence START 1;
+
 create table "user" (
     id bigserial not null,
     name varchar(255),
     email varchar(255),
+    creation_date timestamp,
+    updated_date timestamp,
     primary key (id));
 
 
@@ -16,7 +20,6 @@ create table task (
     updated_date timestamp,
     "creator_id" bigserial,
     "executor_id" bigserial,
-    "inspecting_id" bigserial,
     primary key (id));
 
 alter table if exists task
@@ -26,7 +29,3 @@ alter table if exists task
 alter table if exists task
     add constraint task_executor_fk
     foreign key ("executor_id") references "user";
-
-alter table if exists task
-    add constraint task_inspecting_fk
-     foreign key ("inspecting_id") references "user";
