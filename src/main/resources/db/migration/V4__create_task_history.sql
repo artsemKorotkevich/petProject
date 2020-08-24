@@ -1,3 +1,5 @@
+CREATE SEQUENCE historySequence_id_seq;
+
 create table  history(
     id  bigserial not null,
     task_id bigserial,

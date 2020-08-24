@@ -1,5 +1,4 @@
-CREATE SEQUENCE hibernate_sequence START 1;
-
+CREATE SEQUENCE userSequence_id_seq;
 create table "user" (
     id bigserial not null,
     name varchar(255),
@@ -8,7 +7,7 @@ create table "user" (
     updated_date timestamp,
     primary key (id));
 
-
+CREATE SEQUENCE taskSequence_id_seq;
 create table task (
     id  bigserial not null,
     creation_date timestamp,

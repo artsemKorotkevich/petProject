@@ -1,4 +1,4 @@
-package by.innowise.taskService;
+package by.innowise.taskService.repositories;
 
 import by.innowise.taskService.config.FlywayMigrationConfig;
 import by.innowise.taskService.entities.User;
@@ -28,18 +28,16 @@ public class UserRepositoryIntegrationTest {
     private UserRepository userRepository;
 
     @Test
-    @Transactional
-    public void saveUser() {
+    public void testSaveUser() {
         User user = new User();
-        user.setName("artem");
+        user.setName("Name");
         user.setEmail("test1@gmail.com");
-        userRepository.save(user);
-        Assert.assertEquals(user, userRepository.findUserById(2));
+        User save = userRepository.save(user);
+        Assert.assertEquals(user, userRepository.findUserById(save.getId()));
     }
 
     @Test
-    @Transactional
-    public void saveListUser() {
+    public void testSaveListUser() {
         List<User> userList = new ArrayList<>();
         User user = new User();
         user.setName("artem");
@@ -58,22 +56,21 @@ public class UserRepositoryIntegrationTest {
         Assert.assertEquals(4,users.size());
     }
     @Test
-    public void updateUser(){
+    public void testUpdateUser(){
         User userById = userRepository.findUserById(1);
         userById.setName("test11");
-        userRepository.save(userById);
-        Assert.assertEquals("test11",userRepository.findUserById(1).getName());
+        User userSave = userRepository.save(userById);
+        Assert.assertEquals("test11",userRepository.findUserById(userSave.getId()).getName());
     }
 
     @Test
-    public void deleteUser(){
+    public void testDeleteUser(){
         User user = new User();
         user.setName("artem");
         user.setEmail("test1@gmail.com");
-        Assert.assertTrue(userRepository.findById(2l).isEmpty());
-        userRepository.save(user);
-        Assert.assertFalse(userRepository.findById(2l).isEmpty());
-        userRepository.deleteById(2l);
-        Assert.assertTrue(userRepository.findById(2l).isEmpty());
+        long id = userRepository.save(user).getId();
+        Assert.assertFalse(userRepository.findById(id).isEmpty());
+        userRepository.deleteById(id);
+        Assert.assertTrue(userRepository.findById(id).isEmpty());
     }
 }

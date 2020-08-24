@@ -1,3 +1,5 @@
+CREATE SEQUENCE commentSequence_id_seq;
+
 create table comment (
 id  bigserial not null,
     comment varchar(255),
