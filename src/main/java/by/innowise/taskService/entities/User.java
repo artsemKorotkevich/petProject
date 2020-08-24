@@ -22,8 +22,10 @@ public class User {
     private String name;
     private String email;
     @CreatedDate
+    @Column(name = "creation_date",updatable = false)
     private ZonedDateTime creationDate;
     @LastModifiedDate
+    @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 }
 
